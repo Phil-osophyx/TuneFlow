@@ -1,40 +1,167 @@
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins";
-    font-weight: 600;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  font-weight: 600;
 }
 
-body{
-    background-color: #121212;
-    color: white;
-    padding-bottom: 100px;
+body {
+  background-color: #121212;
+  color: white;
+  padding-bottom: 100px;
 }
 
-header{
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #181818;
+}
+
+header h1 {
+  font-size: 30px;
+  color: #00bfff;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: #89a6cc;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: white;
+}
+
+/*MAIN */
+main {
+  padding: 40px;
+}
+
+.playlist {
+  margin-bottom: 45px;
+}
+
+.playlist h2 {
+  margin-bottom: 20px;
+}
+
+/* songs */
+
+.song-list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.song {
+  background-color: #181818;
+  padding: 15px;
+  width: 180px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.song:hover {
+  background-color: #282828;
+  transform: translateY(-5px);
+}
+
+.song img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.song h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #00bfff;
+}
+
+.song p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* Music player*/
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: #181818;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px, 30px;
+}
+
+.now-playing {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background-color: #181818;
+    gap: 10px;
 }
 
-header h1{
-    font-size: 30px;
-    color: #00BFFF;
+.now-playing img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
 }
- 
-nav{
+
+.now-playing p {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.player {
     display: flex;
-    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
-nav a{
-    color:#89a6cc;
-    text-decoration: none;
+.volume {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-nav a:hover{
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+.controls button {
+    background: none;
+    border: none;
     color: white;
+    font-size: 22px;
+    cursor: pointer;
 }
+
+.controls button:hover {
+    transform: scale(1.2);
+}
+
+#progress {
+    width: 250px;
+}
+
+
+
+
