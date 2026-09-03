@@ -70,6 +70,8 @@ function playSong(index) {
   playerArtist.textContent = songs[index].artist;
   playerImage.src = songs[index].image;
 
+  progress.value = 0;
+
   audio.play();
 
   playButton.textContent = "⏸";
@@ -115,3 +117,38 @@ progress.addEventListener("input", () => {
     }
 })
 
+// Next Song
+
+nextButton.addEventListener("click", () => {
+  currentSong++;
+
+  if(currentSong >= songs.length){
+    currentSong = 0;
+  }
+
+  playSong(currentSong);
+})
+
+// Previous Song
+
+previousButton.addEventListener("click",() => {
+  currentSong--;
+
+  if(currentSong < 0){
+    currentSong= songs.length -1;
+  }
+
+  playSong(currentSong);
+})
+
+// Automatically play next song when current song ends
+
+audio.addEventListener("endend",() => {
+  currentSong++;
+
+   if (currentSong >= songs.length) {
+        currentSong = 0;
+    }
+
+    playSong(currentSong);
+})
