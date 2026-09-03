@@ -88,10 +88,10 @@ playButton.addEventListener("click",() => {
 
     if(audio.paused){
         audio.play();
-        playButton.textContent= "⏸"
+        playButton.classList.add("pause");
     } else{
         audio.pause();
-        playButton.textContent= "▶"
+        playButton.classList.remove("pause");
     }
 })
 
