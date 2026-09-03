@@ -152,3 +152,12 @@ audio.addEventListener("ended",() => {
 
     playSong(currentSong);
 })
+ 
+const volume = document.getElementById("volume");
+
+audio.volume = volume.value;
+
+volume.addEventListener("input", () => {
+  audio.volume = volume.value;
+});
+
