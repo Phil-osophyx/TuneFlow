@@ -13,17 +13,17 @@ A modern and responsive music player built with **HTML, CSS, and JavaScript**.
 
 # 🛣️ Upcoming Features:
 
-    🔐 Functional signup/login pages
+*🔐 Functional signup/login pages
 
-    🔎 Working home & search navigation
+*🔎 Working home & search navigation
 
-    🌙 Dark mode toggle
+*🌙 Dark mode toggle
 
-    🧠 Smart mood-based playlists (AI-generated — experimental)
+*🧠 Smart mood-based playlists (AI-generated — experimental)
 
-    🔁 Loop playlist / loop one
+*🔁 Loop playlist / loop one
 
-    🔀 Shuffle mode
+*🔀 Shuffle mode
 
 ### 🛠️ Built With
 
