@@ -74,7 +74,7 @@ function playSong(index) {
 
   audio.play();
 
-  playButton.textContent = "⏸";
+  playButton.classList.add("pause");
 }
 
 songCards.forEach((song, index) => {
@@ -143,7 +143,7 @@ previousButton.addEventListener("click",() => {
 
 // Automatically play next song when current song ends
 
-audio.addEventListener("endend",() => {
+audio.addEventListener("ended",() => {
   currentSong++;
 
    if (currentSong >= songs.length) {

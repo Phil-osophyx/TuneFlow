@@ -535,11 +535,13 @@ footer {
 
 .play.pause::before {
     content: "";
-    border: none;
+    position: absolute;
     width: 5px;
     height: 20px;
     background: white;
-    left: 14px;
+    left: 13px;
+    top: 10px;
+    border: none;
 }
 
 .play.pause::after {
@@ -548,8 +550,8 @@ footer {
     width: 5px;
     height: 20px;
     background: white;
-    left: 23px;
-    top: 12px;
+    left: 22px;
+    top: 10px;
 }
 
 #progress {
