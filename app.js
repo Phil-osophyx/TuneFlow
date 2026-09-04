@@ -64,6 +64,10 @@ const loopButton = document.getElementById("loop");
 
 let loopSong = false;
 
+const shuffleButton = document.getElementById("shuffle");
+
+let shuffleOn = false;
+
 let currentSong = 0;
 
 function playSong(index) {
@@ -129,14 +133,26 @@ progress.addEventListener("input", () => {
 // Next Song
 
 nextButton.addEventListener("click", () => {
-  currentSong++;
 
-  if(currentSong >= songs.length){
-    currentSong = 0;
-  }
+    if (shuffleOn) {
+        let randomSong;
 
-  playSong(currentSong);
-})
+        do {
+            randomSong = Math.floor(Math.random() * songs.length);
+        } while (randomSong === currentSong && songs.length > 1);
+
+        playSong(randomSong);
+
+    } else {
+        currentSong++;
+
+        if (currentSong >= songs.length) {
+            currentSong = 0;
+        }
+
+        playSong(currentSong);
+    }
+});
 
 // Previous Song
 
@@ -159,6 +175,17 @@ audio.addEventListener("ended", () => {
         return;
     }
 
+    if (shuffleOn) {
+        let randomSong;
+
+        do {
+            randomSong = Math.floor(Math.random() * songs.length);
+        } while (randomSong === currentSong && songs.length > 1);
+
+        playSong(randomSong);
+        return;
+    }
+
     currentSong++;
 
     if (currentSong >= songs.length) {
@@ -167,6 +194,8 @@ audio.addEventListener("ended", () => {
 
     playSong(currentSong);
 });
+
+
 const volume = document.getElementById("volume");
 
 audio.volume = volume.value;
@@ -174,6 +203,8 @@ audio.volume = volume.value;
 volume.addEventListener("input", () => {
   audio.volume = volume.value;
 });
+
+// Loop Songs
 
 loopButton.addEventListener("click", () => {
     loopSong = !loopSong;
@@ -184,3 +215,16 @@ loopButton.addEventListener("click", () => {
         loopButton.style.color = "#bdbdc7";
     }
 });
+
+// Shuffle Songs
+
+shuffleButton.addEventListener("click", () => {
+    shuffleOn = !shuffleOn;
+
+    if (shuffleOn) {
+        shuffleButton.style.color = "#9d7cff";
+    } else {
+        shuffleButton.style.color = "#bdbdc7";
+    }
+});
+
