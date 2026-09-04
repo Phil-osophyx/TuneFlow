@@ -59,6 +59,10 @@ const playerArtist = document.getElementById("player-artist");
 const playerImage = document.getElementById("player-img");
 
 const songCards = document.querySelectorAll(".song");
+const playIcon = playButton.querySelector("i");
+const loopButton = document.getElementById("loop");
+
+let loopSong = false;
 
 let currentSong = 0;
 
@@ -74,7 +78,8 @@ function playSong(index) {
 
   audio.play();
 
-  playButton.classList.add("pause");
+  playIcon.classList.remove("fa-play");
+playIcon.classList.add("fa-pause");
 }
 
 songCards.forEach((song, index) => {
@@ -84,16 +89,20 @@ songCards.forEach((song, index) => {
 });
 
 
-playButton.addEventListener("click",() => {
+playButton.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
 
-    if(audio.paused){
-        audio.play();
-        playButton.classList.add("pause");
-    } else{
-        audio.pause();
-        playButton.classList.remove("pause");
-    }
-})
+    playIcon.classList.remove("fa-play");
+    playIcon.classList.add("fa-pause");
+
+  } else {
+    audio.pause();
+
+    playIcon.classList.remove("fa-pause");
+    playIcon.classList.add("fa-play");
+  }
+});
 
 
 const nextButton = document.getElementById("next");
@@ -143,16 +152,21 @@ previousButton.addEventListener("click",() => {
 
 // Automatically play next song when current song ends
 
-audio.addEventListener("ended",() => {
-  currentSong++;
+audio.addEventListener("ended", () => {
 
-   if (currentSong >= songs.length) {
+    if (loopSong) {
+        playSong(currentSong);
+        return;
+    }
+
+    currentSong++;
+
+    if (currentSong >= songs.length) {
         currentSong = 0;
     }
 
     playSong(currentSong);
-})
- 
+});
 const volume = document.getElementById("volume");
 
 audio.volume = volume.value;
@@ -161,3 +175,12 @@ volume.addEventListener("input", () => {
   audio.volume = volume.value;
 });
 
+loopButton.addEventListener("click", () => {
+    loopSong = !loopSong;
+
+    if (loopSong) {
+        loopButton.style.color = "#9d7cff";
+    } else {
+        loopButton.style.color = "#bdbdc7";
+    }
+});
