@@ -1,139 +1,194 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TuneFlow</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>TuneFlow</title>
+      <link rel="stylesheet" href="style.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet"
+      />
 
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-/>  
-  </head>
-  <body>
+      <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  />  
+    </head>
+    <body>
+      <header>
+        <img src="images/logo.png" alt="TuneFlow" class="logo">
+        <nav>
+          <a href="">Home</a>
+          <a href="">Songs</a>
+          <a href="">Playlists</a>
+        </nav>
+      </header>
+
+      <main id="home-section">
+        <section class="playlist">
+          <h2>My Station</h2>
+          <div class="song-list">
+            <div class="song">
+              <img src="images/dancingqueen.jpg" alt="Album" />
+              <h3>Dancing Queen</h3>
+              <p>ABBA</p>
+            </div>
+
+            <div class="song">
+              <img src="images/the-winner.png" alt="Album" />
+              <h3>The Winner Takes It All</h3>
+              <p>ABBA</p>
+            </div>
+
+            <div class="song">
+              <img src="images/heyjude.jpg" alt="Album" />
+              <h3>Hey Jude!</h3>
+              <p>The Beatles</p>
+            </div>
+
+            <div class="song">
+              <img src="images/bohemian-rhapsody.jpg" alt="Album" />
+              <h3>Bohemian Rhapsody</h3>
+              <p>The Queen</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="playlist">
+          <h2>Bollywood Hits</h2>
+          <div class="song-list">
+            <div class="song">
+              <img src="images/Kabira.jpeg" alt="Album" />
+              <h3>Kabira</h3>
+              <p>Arijit Singh, Harshdeep Kaur</p>
+            </div>
+
+            <div class="song">
+              <img src="images/Arz-kiya-hai.jpg" alt="Album" />
+              <h3>Arz Kiya Hai</h3>
+              <p>Anuv Jain</p>
+            </div>
+
+            <div class="song">
+              <img src="images/slowmotion.jpg" alt="Album" />
+              <h3>Slow Motion Angreza</h3>
+              <p>Loy Mendonsa, Shankar Mahadevan, and Sukhwinder Singh</p>
+            </div>
+
+            <div class="song">
+              <img src="images/Tere-liye.jpeg" alt="Album" />
+              <h3>Tere Liye</h3>
+              <p>Atif aslam</p>
+            </div>
+          </div>
+        </section>
+        
+        <section class="all-playlists">
+
+      <h2>All Playlists</h2>
+
+      <div class="playlist-list">
+
+          <div class="playlist-card" onclick="openPlaylist('Chill Vibes')">
+              <img src="images/ab67616d0000b273cfcafdfcb0c989844564ec59.jpeg" alt="Chill Vibes">
+
+              <h3>Chill Vibes</h3>
+              <p>Your escape from the noise.</p>
+          </div>
+
+          <div class="playlist-card" onclick="openPlaylist('Workout Mix')">
+              <img src="images/Ryan Garcia.jpeg" alt="Workout">
+
+              <h3>Workout Mix</h3>
+              <p>Turn up the energy. Own the moment.</p>
+          </div>
+
+          
+      </div>
+
+  </section>
+      </main>
+
+
+      <section id="playlist-page">
+
     <header>
-      <img src="images/logo.png" alt="TuneFlow" class="logo">
-      <nav>
-        <a href="">Home</a>
-        <a href="">Songs</a>
-        <a href="">Playlists</a>
-      </nav>
+        <img src="images/logo.png" alt="TuneFlow" class="logo">
+
+        <nav>
+            <a href="#" onclick="closePlaylist(); return false;">Home</a>
+            <a href="#">Songs</a>
+            <a href="#">Playlists</a>
+        </nav>
     </header>
 
-    <main>
-      <section class="playlist">
-        <h2>My Station</h2>
-        <div class="song-list">
-          <div class="song">
-            <img src="images/dancingqueen.jpg" alt="Album" />
-            <h3>Dancing Queen</h3>
-            <p>ABBA</p>
-          </div>
+    <div class="playlist-content">
 
-          <div class="song">
-            <img src="images/the-winner.png" alt="Album" />
-            <h3>The Winner Takes It All</h3>
-            <p>ABBA</p>
-          </div>
-
-          <div class="song">
-            <img src="images/heyjude.jpg" alt="Album" />
-            <h3>Hey Jude!</h3>
-            <p>The Beatles</p>
-          </div>
-
-          <div class="song">
-            <img src="images/bohemian-rhapsody.jpg" alt="Album" />
-            <h3>Bohemian Rhapsody</h3>
-            <p>The Queen</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="playlist">
-        <h2>Bollywood Hits</h2>
-        <div class="song-list">
-          <div class="song">
-            <img src="images/Kabira.jpeg" alt="Album" />
-            <h3>Kabira</h3>
-            <p>Arijit Singh, Harshdeep Kaur</p>
-          </div>
-
-          <div class="song">
-            <img src="images/Arz-kiya-hai.jpg" alt="Album" />
-            <h3>Arz Kiya Hai</h3>
-            <p>Anuv Jain</p>
-          </div>
-
-          <div class="song">
-            <img src="images/slowmotion.jpg" alt="Album" />
-            <h3>Slow Motion Angreza</h3>
-            <p>Loy Mendonsa, Shankar Mahadevan, and Sukhwinder Singh</p>
-          </div>
-
-          <div class="song">
-            <img src="images/Tere-liye.jpeg" alt="Album" />
-            <h3>Tere Liye</h3>
-            <p>Atif aslam</p>
-          </div>
-        </div>
-      </section>
-      
-    </main>
-
-    <footer>
-
-      <div class="now-playing">
-        <img id="player-img" src="images/dancingqueen.jpg" alt="Album">
-        <div>
-          <h3 id="player-title" > Not Playing</h3>
-          <p id="player-artist">Artist Name</p>
-        </div>
-      </div>
-<div class="player">
-
-<div class="controls">
-  <button id="shuffle" class="control-btn">
-    <i class="fa-solid fa-shuffle"></i>
+       <button type="button" class="back-btn" onclick="closePlaylist()">
+    <i class="fa-solid fa-arrow-left"></i>
+    Back
 </button>
-    <button id="previous" class="control-btn">
-        <i class="fa-solid fa-backward-step"></i>
-    </button>
 
-    <button id="play" class="control-btn play">
-        <i class="fa-solid fa-play"></i>
-    </button>
+        <h1 id="selected-playlist">Playlist</h1>
 
-    <button id="next" class="control-btn">
-        <i class="fa-solid fa-forward-step"></i>
-    </button>
+        <div class="playlist-songs" id="playlist-songs"></div>
 
-    <button id="loop" class="control-btn">
-    <i class="fa-solid fa-repeat"></i>
-</button>
-</div>
-        <input type="range" id="progress" value="0" min="0" max="100">
-</div>
+    </div>
 
-   
-  <div class="volume">
-    <i class="fa-solid fa-volume-high"></i>
-    <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
-</div>
+</section>
 
-</footer>
+      <footer>
 
-<audio id="audio"></audio>
+        <div class="now-playing">
+          <img id="player-img" src="images/dancingqueen.jpg" alt="Album">
+          <div>
+            <h3 id="player-title" > Not Playing</h3>
+            <p id="player-artist">Artist Name</p>
+          </div>
+        </div>
+  <div class="player">
 
-  
+  <div class="controls">
+    <button id="shuffle" class="control-btn">
+      <i class="fa-solid fa-shuffle"></i>
+  </button>
+      <button id="previous" class="control-btn">
+          <i class="fa-solid fa-backward-step"></i>
+      </button>
 
-<script src="app.js"></script>
-  </body>
-</html>
+      <button id="play" class="control-btn play">
+          <i class="fa-solid fa-play"></i>
+      </button>
+
+      <button id="next" class="control-btn">
+          <i class="fa-solid fa-forward-step"></i>
+      </button>
+
+      <button id="loop" class="control-btn">
+      <i class="fa-solid fa-repeat"></i>
+  </button>
+  </div>
+          <input type="range" id="progress" value="0" min="0" max="100">
+  </div>
+
+    
+    <div class="volume">
+      <i class="fa-solid fa-volume-high"></i>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+  </div>
+
+  </footer>
+
+  <audio id="audio"></audio>
+
+    
+
+  <script src="app.js"></script>
+    </body>
+  </html>
+
+
+  <!-- ADD SONGS FOR CHILL VIBES AND WORKOUT MIX -->

@@ -228,3 +228,88 @@ shuffleButton.addEventListener("click", () => {
     }
 });
 
+
+
+function openPlaylist(name) {
+
+    const playlistPage = document.getElementById("playlist-page");
+    const homeSection = document.getElementById("home-section");
+    const homeHeader = document.querySelector("body > header");
+    const footer = document.querySelector("body > footer");
+
+    // Hide homepage
+    homeHeader.style.display = "none";
+    homeSection.style.display = "none";
+    footer.style.display = "none";
+
+    // Show playlist page
+    playlistPage.style.display = "block";
+
+    // Change playlist title
+    document.getElementById("selected-playlist").textContent = name;
+
+    // Get the playlist songs
+    const playlistSongs = playlists[name];
+
+    // Get container
+    const playlistContainer = document.getElementById("playlist-songs");
+
+    // Clear previous playlist
+    playlistContainer.innerHTML = "";
+
+    // Create song cards
+    playlistSongs.forEach((songIndex) => {
+
+        const song = songs[songIndex];
+
+        const songCard = document.createElement("div");
+        songCard.classList.add("playlist-song");
+
+        songCard.innerHTML = `
+            <img src="${song.image}" alt="${song.name}">
+            <div class="playlist-song-info">
+                <h3>${song.name}</h3>
+                <p>${song.artist}</p>
+            </div>
+        `;
+
+        // Play song when clicked
+        songCard.addEventListener("click", () => {
+            playSong(songIndex);
+        });
+
+        playlistContainer.appendChild(songCard);
+    });
+
+    window.scrollTo(0, 0);
+}
+
+
+function closePlaylist() {
+
+    // Hide playlist page
+    document.getElementById("playlist-page").style.display = "none";
+
+    // Show home page
+    document.querySelector("body > header").style.display = "flex";
+    document.getElementById("home-section").style.display = "block";
+
+    // Show player
+    document.querySelector("footer").style.display = "flex";
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+
+const playlists = {
+    "Chill Vibes": [
+        7, // Dancing Queen
+        4  // Kabira
+    ],
+
+    "Workout Mix": [
+        3, // Bohemian Rhapsody
+        6  // Slow Motion Angreza
+    ]
+};
