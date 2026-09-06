@@ -49,6 +49,66 @@ const songs = [
     file: "songs/tereliye.mp3",
     image: "images/Tere-liye.jpeg",
   },
+  {
+    name: "Birds of a Feather",
+    artist: "Billie Eilish",
+    file: "songs/birdsof.mp3",
+    image: "images/birdsof.jpg",
+  },
+  {
+    name: "Earrings",
+    artist: "Malcom Todd",
+    file: "songs/earrings.mp3",
+    image: "images/earrings.jpg",
+  },
+    {
+    name: "I Wanna Be Yours",
+    artist: "Arctic Monkeys",
+    file: "songs/wannabe.mp3",
+    image: "images/iwanna.png",
+  },
+    {
+    name: "As It Was",
+    artist: "Hary Styles",
+    file: "songs/As it was.mp3",
+    image: "images/AsItWas.jpeg",
+  },
+   {
+    name: "I Thought I Saw Your Face Today",
+    artist: "She & Him",
+    file: "songs/i thought.mp3",
+    image: "images/I thought.jpeg",
+  },
+  {
+    name: "Destiny - Mann Atkeya",
+    artist: "Shashwat Sachdev, Token, Vaibhav Gupta, and Shahzad Ali",
+    file: "songs/destiny.mp3",
+    image: "images/destiny.jpg",
+  },
+  {
+    name: "São Paulo",
+    artist: "The Weeknd",
+    file: "songs/sao paulo.mp3",
+    image: "images/sao paulo.jpg",
+  },
+   {
+    name: "Udta Punjab",
+    artist: "Vishal Dadlani and Amit Trivedi",
+    file: "songs/ud punjab.mp3",
+    image: "images/ud punjab.jpeg",
+  },
+  {
+    name: "We on Go",
+    artist: "BIA",
+    file: "songs/we on go.mp3",
+    image: "images/we on go.jpeg",
+  },
+  {
+    name: "Zinda",
+    artist: "Siddharth Mahadevan",
+    file: "songs/zinda.mp3",
+    image: "images/slowmotion.jpg",
+  },
 ];
 
 const audio = document.getElementById("audio");
@@ -69,6 +129,7 @@ const shuffleButton = document.getElementById("shuffle");
 let shuffleOn = false;
 
 let currentSong = 0;
+let currentPlaylist = null;
 
 function playSong(index) {
   currentSong = index;
@@ -83,11 +144,12 @@ function playSong(index) {
   audio.play();
 
   playIcon.classList.remove("fa-play");
-playIcon.classList.add("fa-pause");
+  playIcon.classList.add("fa-pause");
 }
 
 songCards.forEach((song, index) => {
   song.addEventListener("click", () => {
+    currentPlaylist = null;
     playSong(index);
   });
 });
@@ -134,6 +196,32 @@ progress.addEventListener("input", () => {
 
 nextButton.addEventListener("click", () => {
 
+    if (currentPlaylist) {
+
+        const playlistSongs = playlists[currentPlaylist];
+        let currentIndex = playlistSongs.indexOf(currentSong);
+
+        if (shuffleOn) {
+            let randomSong;
+
+            do {
+                randomSong = Math.floor(Math.random() * playlistSongs.length);
+            } while (randomSong === currentIndex && playlistSongs.length > 1);
+
+            playSong(playlistSongs[randomSong]);
+            return;
+        }
+
+        currentIndex++;
+
+        if (currentIndex >= playlistSongs.length) {
+            currentIndex = 0;
+        }
+
+        playSong(playlistSongs[currentIndex]);
+        return;
+    }
+
     if (shuffleOn) {
         let randomSong;
 
@@ -157,13 +245,29 @@ nextButton.addEventListener("click", () => {
 // Previous Song
 
 previousButton.addEventListener("click",() => {
-  currentSong--;
 
-  if(currentSong < 0){
-    currentSong= songs.length -1;
-  }
+    if (currentPlaylist) {
 
-  playSong(currentSong);
+        const playlistSongs = playlists[currentPlaylist];
+        let currentIndex = playlistSongs.indexOf(currentSong);
+
+        currentIndex--;
+
+        if(currentIndex < 0){
+            currentIndex = playlistSongs.length - 1;
+        }
+
+        playSong(playlistSongs[currentIndex]);
+        return;
+    }
+
+    currentSong--;
+
+    if(currentSong < 0){
+        currentSong= songs.length -1;
+    }
+
+    playSong(currentSong);
 })
 
 // Automatically play next song when current song ends
@@ -172,6 +276,32 @@ audio.addEventListener("ended", () => {
 
     if (loopSong) {
         playSong(currentSong);
+        return;
+    }
+
+    if (currentPlaylist) {
+
+        const playlistSongs = playlists[currentPlaylist];
+        let currentIndex = playlistSongs.indexOf(currentSong);
+
+        if (shuffleOn) {
+            let randomSong;
+
+            do {
+                randomSong = Math.floor(Math.random() * playlistSongs.length);
+            } while (randomSong === currentIndex && playlistSongs.length > 1);
+
+            playSong(playlistSongs[randomSong]);
+            return;
+        }
+
+        currentIndex++;
+
+        if (currentIndex >= playlistSongs.length) {
+            currentIndex = 0;
+        }
+
+        playSong(playlistSongs[currentIndex]);
         return;
     }
 
@@ -229,8 +359,9 @@ shuffleButton.addEventListener("click", () => {
 });
 
 
-
 function openPlaylist(name) {
+
+    currentPlaylist = name;
 
     const playlistPage = document.getElementById("playlist-page");
     const homeSection = document.getElementById("home-section");
@@ -240,8 +371,7 @@ function openPlaylist(name) {
     // Hide homepage
     homeHeader.style.display = "none";
     homeSection.style.display = "none";
-    footer.style.display = "none";
-
+    
     // Show playlist page
     playlistPage.style.display = "block";
 
@@ -256,6 +386,9 @@ function openPlaylist(name) {
 
     // Clear previous playlist
     playlistContainer.innerHTML = "";
+
+    // Keep music player visible
+    footer.style.display = "flex";
 
     // Create song cards
     playlistSongs.forEach((songIndex) => {
@@ -275,6 +408,7 @@ function openPlaylist(name) {
 
         // Play song when clicked
         songCard.addEventListener("click", () => {
+            currentPlaylist = name;
             playSong(songIndex);
         });
 
@@ -286,6 +420,8 @@ function openPlaylist(name) {
 
 
 function closePlaylist() {
+
+    currentPlaylist = null;
 
     // Hide playlist page
     document.getElementById("playlist-page").style.display = "none";
@@ -304,12 +440,18 @@ function closePlaylist() {
 
 const playlists = {
     "Chill Vibes": [
-        7, // Dancing Queen
-        4  // Kabira
+        8,
+        9,
+        10,
+        11,
+        12
     ],
 
     "Workout Mix": [
-        3, // Bohemian Rhapsody
-        6  // Slow Motion Angreza
+        13,
+        14,
+        15,
+        16,
+        17
     ]
 };
