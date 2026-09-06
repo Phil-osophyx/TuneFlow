@@ -506,9 +506,9 @@ footer {
     display: grid;
 
     grid-template-columns:
-        repeat(5, minmax(200px, 300px));
+        repeat(5, minmax(180px, 280px));
 
-    gap: 40px;
+    gap: 25px;
 
     margin-top: 30px;
 }
