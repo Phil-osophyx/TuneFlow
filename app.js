@@ -77,7 +77,7 @@ const songs = [
     name: "I Thought I Saw Your Face Today",
     artist: "She & Him",
     file: "songs/i thought.mp3",
-    image: "images/I thought.jpeg",
+    image: "images/I Thought.jpeg",
   },
   {
     name: "Destiny - Mann Atkeya",
