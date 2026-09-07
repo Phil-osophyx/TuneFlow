@@ -10,13 +10,14 @@ A modern and responsive music player built with **HTML, CSS, and JavaScript**.
 * 🔊 Volume control
 * 📱 Responsive design
 * 🎵 Multiple playlists
+* 🔁 Loop playlist / loop one
+* 🔀 Shuffle mode
+  
 
 ### 🛣️ Upcoming Features:
 
 - 🔐 Functional signup/login pages
 - 🌙 Dark mode toggle
-- 🔁 Loop playlist / loop one
-- 🔀 Shuffle mode
 
 ### 🛠️ Built With
 
